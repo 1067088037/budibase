@@ -47,9 +47,9 @@
         <img src={$organisation.logoUrl || Logo} alt="Organisation logo" />
       </Layout>
       <Layout gap="XS" noPadding>
-        <Heading textAlign="center">Reset your password</Heading>
+        <Heading textAlign="center">重置你的密码</Heading>
         <Body size="S" textAlign="center">
-          Please enter the new password you'd like to use.
+          请输入您要使用的新密码
         </Body>
         <PasswordRepeatInput bind:password bind:error />
       </Layout>
@@ -58,7 +58,7 @@
         on:click={reset}
         disabled={error || (forceResetPassword ? false : !resetCode)}
       >
-        Reset your password
+        重置密码
       </Button>
     </Layout>
   </div>

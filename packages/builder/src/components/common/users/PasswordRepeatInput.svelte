@@ -28,13 +28,13 @@
 
 <Layout gap="XS" noPadding>
   <Input
-    label="Password"
+    label="输入密码"
     type="password"
     error={$firstTouched && $passwordError}
     bind:value={$firstPassword}
   />
   <Input
-    label="Repeat Password"
+    label="重新输入密码"
     type="password"
     error={$repeatTouched &&
       $firstPassword !== $repeatPassword &&

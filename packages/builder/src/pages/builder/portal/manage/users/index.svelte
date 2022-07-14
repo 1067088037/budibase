@@ -16,14 +16,20 @@
   } from "@budibase/bbui"
   import TagsRenderer from "./_components/TagsTableRenderer.svelte"
   import AddUserModal from "./_components/AddUserModal.svelte"
-  import { users } from "stores/portal"
+  import { users, auth } from "stores/portal"
   import { createPaginationStore } from "helpers/pagination"
 
   const schema = {
-    email: {},
-    developmentAccess: { displayName: "Development Access", type: "boolean" },
-    adminAccess: { displayName: "Admin Access", type: "boolean" },
-    group: {},
+    email: { displayName: "电子邮件" },
+    lastName: { displayName: "姓氏" },
+    firstName: { displayName: "名字" },
+    'builder.global': { displayName: "开发者", type: "boolean" },
+    'admin.global': { displayName: "管理员", type: "boolean" },
+    group: { displayName: "组" },
+  }
+
+  if ($auth.isRoot) {
+    schema['root.global'] = { displayName: "ROOT", type: "boolean" }
   }
 
   let pageInfo = createPaginationStore()
@@ -31,6 +37,7 @@
     search = undefined
   $: page = $pageInfo.page
   $: fetchUsers(page, search)
+  let userList
 
   let createUserModal
 
@@ -48,6 +55,10 @@
       pageInfo.loading()
       await users.search({ page, search })
       pageInfo.fetched($users.hasNextPage, $users.nextPage)
+      userList = $users.data.filter(user => {
+        return $auth.isRoot ? true : !user.root?.global
+      })
+      console.log(userList)
     } catch (error) {
       notifications.error("Error getting user list")
     }
@@ -80,7 +91,7 @@
     <Table
       on:click={({ detail }) => $goto(`./${detail._id}`)}
       {schema}
-      data={$users.data}
+      data={userList}
       allowEditColumns={false}
       allowEditRows={false}
       allowSelectRows={false}

@@ -10,6 +10,9 @@ export interface User extends Document {
   admin?: {
     global: boolean
   }
+  root: {
+    global: boolean
+  }
   providerType?: string
   password?: string
   status?: string

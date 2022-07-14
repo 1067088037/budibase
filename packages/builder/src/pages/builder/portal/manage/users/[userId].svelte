@@ -112,6 +112,10 @@
     return toggleFlag("admin", detail)
   }
 
+  async function toggleRootAccess({ detail }) {
+    return toggleFlag("root", detail)
+  }
+
   async function openUpdateRolesModal({ detail }) {
     selectedApp = detail
     editRolesModal.show()
@@ -184,6 +188,17 @@
             disabled={toggleDisabled}
           />
         </div>
+        {#if $auth.isRoot }
+          <div class="field">
+            <Label size="L">Root access</Label>
+            <Toggle
+              text=""
+              value={$userFetch?.data?.root?.global}
+              on:change={toggleRootAccess}
+              disabled={toggleDisabled}
+            />
+          </div>
+        {/if}
       {/if}
     </div>
     <div class="regenerate">

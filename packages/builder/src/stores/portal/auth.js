@@ -13,6 +13,7 @@ export function createAuthStore() {
   })
   const store = derived(auth, $store => {
     let initials = null
+    let isRoot = false
     let isAdmin = false
     let isBuilder = false
     if ($store.user) {
@@ -27,6 +28,7 @@ export function createAuthStore() {
       } else {
         initials = "Unknown"
       }
+      isRoot = !!user.root?.global
       isAdmin = !!user.admin?.global
       isBuilder = !!user.builder?.global
     }
@@ -37,6 +39,7 @@ export function createAuthStore() {
       loaded: $store.loaded,
       postLogout: $store.postLogout,
       initials,
+      isRoot,
       isAdmin,
       isBuilder,
     }
@@ -64,6 +67,7 @@ export function createAuthStore() {
             name: user.account?.name,
             user_id: user._id,
             tenant: user.tenantId,
+            root: user?.root?.global,
             admin: user?.admin?.global,
             builder: user?.builder?.global,
             "Company size": user.account?.size,

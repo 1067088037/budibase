@@ -12,11 +12,11 @@
       await templates.load()
       if ($templates?.length === 0) {
         notifications.error(
-          "There was a problem loading quick start templates."
+          "加载快速入门模板时出现问题！请稍后重试！"
         )
       }
     } catch (error) {
-      notifications.error("Error loading apps and templates")
+      notifications.error("加载应用程序和模板时发生错误！")
     }
     loaded = true
   })

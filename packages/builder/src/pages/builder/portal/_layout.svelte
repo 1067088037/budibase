@@ -28,16 +28,16 @@
   let apiKeyModal
   let mobileMenuVisible = false
 
-  $: menu = buildMenu($auth.isAdmin)
+  $: menu = buildMenu($auth.isAdmin, $auth.isRoot)
 
-  const buildMenu = admin => {
+  const buildMenu = (admin, root) => {
     let menu = [
       {
         title: "Apps",
         href: "/builder/portal/apps",
       },
     ]
-    if (isEnabled(FEATURE_FLAGS.LICENSING)) {
+    if (root || isEnabled(FEATURE_FLAGS.LICENSING)) {
       menu = menu.concat([
         {
           title: "Usage",
@@ -52,6 +52,10 @@
           href: "/builder/portal/manage/users",
           heading: "Manage",
         },
+      ])
+    }
+    if (root) {
+      menu = menu.concat([
         { title: "Auth", href: "/builder/portal/manage/auth" },
         { title: "Email", href: "/builder/portal/manage/email" },
         {

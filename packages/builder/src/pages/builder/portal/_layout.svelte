@@ -33,7 +33,7 @@
   const buildMenu = (admin, root) => {
     let menu = [
       {
-        title: "Apps",
+        title: "应用程序",
         href: "/builder/portal/apps",
       },
     ]
@@ -48,23 +48,23 @@
     if (admin) {
       menu = menu.concat([
         {
-          title: "Users",
+          title: "用户",
           href: "/builder/portal/manage/users",
-          heading: "Manage",
+          heading: "管理",
         },
       ])
     }
     if (root) {
       menu = menu.concat([
-        { title: "Auth", href: "/builder/portal/manage/auth" },
-        { title: "Email", href: "/builder/portal/manage/email" },
+        { title: "权限", href: "/builder/portal/manage/auth" },
+        { title: "邮箱", href: "/builder/portal/manage/email" },
         {
-          title: "Organisation",
+          title: "组织",
           href: "/builder/portal/settings/organisation",
-          heading: "Settings",
+          heading: "设置",
         },
         {
-          title: "Theming",
+          title: "主题",
           href: "/builder/portal/settings/theming",
         },
       ])
@@ -72,14 +72,14 @@
       if (!$adminStore.cloud) {
         menu = menu.concat([
           {
-            title: "Update",
+            title: "更新",
             href: "/builder/portal/settings/update",
           },
         ])
 
         if (isEnabled(FEATURE_FLAGS.LICENSING)) {
           menu = menu.concat({
-            title: "Upgrade",
+            title: "更新",
             href: "/builder/portal/settings/upgrade",
           })
         }
@@ -87,9 +87,9 @@
     } else {
       menu = menu.concat([
         {
-          title: "Theming",
+          title: "主题",
           href: "/builder/portal/settings/theming",
-          heading: "Settings",
+          heading: "设置",
         },
       ])
     }

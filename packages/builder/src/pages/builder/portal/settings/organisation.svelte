@@ -117,7 +117,7 @@
         <div class="field">
           <Label
             size="L"
-            tooltip={"Update the Platform URL to match your Budibase web URL. This keeps email templates and authentication configs up to date."}
+            tooltip={"更新平台URL以匹配您的网页URL。这样可以使电子邮件模板和身份验证配置保持最新。"}
             >平台 URL</Label
           >
           <Input thin bind:value={$values.platformUrl} />

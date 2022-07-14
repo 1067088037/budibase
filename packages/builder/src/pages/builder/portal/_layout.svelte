@@ -40,7 +40,7 @@
     if (root || isEnabled(FEATURE_FLAGS.LICENSING)) {
       menu = menu.concat([
         {
-          title: "Usage",
+          title: "使用情况",
           href: "/builder/portal/settings/usage",
         },
       ])

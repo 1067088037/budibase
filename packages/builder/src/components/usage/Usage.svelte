@@ -34,7 +34,7 @@
   </div>
   <div>
     {#if unlimited}
-      <Body size="S">Unlimited</Body>
+      <Body size="S">不限制</Body>
     {:else}
       <ProgressBar width={"100%"} duration={1} value={percentage} />
     {/if}

@@ -80,10 +80,10 @@
 
 {#if loaded}
   <Layout>
-    <Heading>Usage</Heading>
+    <Heading>使用情况</Heading>
     <Body
-      >Get information about your current usage within Budibase.
-      {#if $admin.cloud}
+      >获取关于您在系统中的使用情况信息。
+    {#if $admin.cloud}
         {#if $auth.user?.accountPortalAccess}
           To upgrade your plan and usage limits visit your <Link
             size="L"
@@ -100,11 +100,11 @@
   </Layout>
   <Layout gap="S" noPadding>
     <Layout gap="XS">
-      <Body size="S">YOUR PLAN</Body>
+      <Body size="S">你的计划</Body>
       <Heading size="S">{capitalise(license?.plan.type)}</Heading>
     </Layout>
     <Layout gap="S">
-      <Body size="S">USAGE</Body>
+      <Body size="S">使用量</Body>
       <div class="usages">
         {#each staticUsage as usage}
           <div class="usage">
@@ -115,7 +115,7 @@
     </Layout>
     {#if monthlyUsage.length}
       <Layout gap="S">
-        <Body size="S">MONTHLY</Body>
+        <Body size="S">每月</Body>
         <div class="usages">
           {#each monthlyUsage as usage}
             <div class="usage">
@@ -124,7 +124,7 @@
           {/each}
         </div>
       </Layout>
-      <div />
+      <div></div>
     {/if}
   </Layout>
 {/if}

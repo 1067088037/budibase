@@ -55,6 +55,13 @@
       notifications.error("邀请用户失败！")
     }
   }
+
+  function getChineseLabel(option) {
+    switch (option) {
+      case "Email onboarding": return "通过电子邮件添加新用户"
+      case "Basic onboarding": return "通过基本流程添加新用户"
+    }
+  }
 </script>
 
 <ModalContent
@@ -75,6 +82,7 @@
     bind:value={selected}
     {options}
     label="通过以下方式添加用户:"
+    getOptionLabel="{getChineseLabel}"
   />
 
   <Input
@@ -82,7 +90,7 @@
     label="邮箱"
     bind:value={$email}
     error={$touched && $error}
-    placeholder="john@doe.com"
+    placeholder="example@ceeda.cn"
   />
 
   {#if basic}

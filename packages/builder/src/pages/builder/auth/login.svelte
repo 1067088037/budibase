@@ -34,7 +34,7 @@
       if ($auth?.user?.forceResetPassword) {
         $goto("./reset")
       } else {
-        notifications.success("Logged in successfully")
+        notifications.success("登录成功！")
         $goto("../portal")
       }
     } catch (err) {

@@ -6,13 +6,13 @@
 
 <Layout noPadding>
   <Layout gap="XS" noPadding>
-    <Heading size="M">Theming</Heading>
-    <Body>Customize how Budibase looks and feels.</Body>
+    <Heading size="M">主题</Heading>
+    <Body>设置Budibase的主题。</Body>
   </Layout>
   <Divider size="S" />
   <div class="fields">
     <div class="field">
-      <Label size="L">Builder theme</Label>
+      <Label size="L">主题样式</Label>
       <Select
         options={$themeStore.options}
         bind:value={$themeStore.theme}

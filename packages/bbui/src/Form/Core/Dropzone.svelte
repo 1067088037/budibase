@@ -283,17 +283,17 @@
         <h2
           class="spectrum-Heading spectrum-Heading--sizeL spectrum-Heading--light spectrum-IllustratedMessage-heading"
         >
-          Drag and drop your file
+          可将文件拖放至此处上传
         </h2>
         {#if !disabled}
           <p
             class="spectrum-Body spectrum-Body--sizeS spectrum-IllustratedMessage-description"
           >
             <label for={fieldId} class="spectrum-Link">
-              Select a file to upload
+              选择文件
             </label>
             <br />
-            from your computer
+            从电脑中选择文件上传
           </p>
           {#if fileTags.length}
             <Tags>

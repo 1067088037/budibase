@@ -410,7 +410,7 @@
         "type": "text",
         "label": "Empty Text",
         "key": "noRowsMessage",
-        "defaultValue": "No rows found"
+        "defaultValue": "没有找到任何行"
       },
       {
         "type": "select",
@@ -3956,7 +3956,7 @@
             "type": "text",
             "label": "Empty Text",
             "key": "noRowsMessage",
-            "defaultValue": "No rows found"
+            "defaultValue": "没有找到任何行"
           },
           {
             "type": "select",

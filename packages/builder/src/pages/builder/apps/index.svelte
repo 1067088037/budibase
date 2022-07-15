@@ -79,23 +79,23 @@
                 <Icon size="XL" name="ChevronDown" />
               </div>
               <MenuItem icon="UserEdit" on:click={() => userInfoModal.show()}>
-                Update user information
+                更新用户信息
               </MenuItem>
               <MenuItem
                 icon="LockClosed"
                 on:click={() => changePasswordModal.show()}
               >
-                Update password
+                更新密码
               </MenuItem>
               {#if $auth.isBuilder}
                 <MenuItem
                   icon="UserDeveloper"
                   on:click={() => $goto("../portal")}
                 >
-                  Open developer mode
+                  打开开发者模式
                 </MenuItem>
               {/if}
-              <MenuItem icon="LogOut" on:click={logout}>Log out</MenuItem>
+              <MenuItem icon="LogOut" on:click={logout}>注销</MenuItem>
             </ActionMenu>
           </div>
           <Layout noPadding gap="XS">

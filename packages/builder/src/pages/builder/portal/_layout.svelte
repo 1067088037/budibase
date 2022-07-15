@@ -191,24 +191,24 @@
               on:click={() => userInfoModal.show()}
               dataCy={"user-info"}
             >
-              Update user information
+              更新用户信息
             </MenuItem>
             {#if $auth.isBuilder}
               <MenuItem icon="Key" on:click={() => apiKeyModal.show()}>
-                View API key
+                查看API密匙
               </MenuItem>
             {/if}
             <MenuItem
               icon="LockClosed"
               on:click={() => changePasswordModal.show()}
             >
-              Update password
+              更新密码
             </MenuItem>
             <MenuItem icon="UserDeveloper" on:click={() => $goto("../apps")}>
-              Close developer mode
+              关闭开发者模式
             </MenuItem>
             <MenuItem dataCy="user-logout" icon="LogOut" on:click={logout}
-              >Log out
+              >注销
             </MenuItem>
           </ActionMenu>
         </div>

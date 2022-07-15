@@ -27,15 +27,14 @@
 </script>
 
 <ModalContent
-  title="Developer information"
+  title="开发者信息"
   showConfirmButton={false}
   showSecondaryButton={true}
-  secondaryButtonText="Re-generate key"
+  secondaryButtonText="重新生成密钥"
   secondaryAction={generateAPIKey}
 >
   <Body size="S">
-    You can find information about your developer account here, such as the API
-    key used to access the Budibase API.
+    您可以在这里找到关于您的开发人员帐户的信息，例如用于访问Budibase API的API密钥。
   </Body>
   <CopyInput bind:value={apiKey} label="API key" />
 </ModalContent>

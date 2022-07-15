@@ -100,11 +100,10 @@
           </div>
           <Layout noPadding gap="XS">
             <Heading size="M">
-              Hey {$auth.user.firstName || $auth.user.email}
+              你好，{$auth.user.firstName || $auth.user.email}
             </Heading>
             <Body>
-              Welcome to the {$organisation.company} portal. Below you'll find the
-              list of apps that you have access to.
+              欢迎来到 {$organisation.company}，下面是你可以使用的应用程序列表。
             </Body>
           </Layout>
           <Divider />
@@ -139,9 +138,9 @@
             </div>
           {:else}
             <Layout gap="XS" noPadding>
-              <Heading size="S">You don't have access to any apps yet.</Heading>
+              <Heading size="S">你还不能使用任何应用程序。</Heading>
               <Body size="S">
-                The apps you have access to will be listed here.
+                你可以访问的应用程序将在这里列出。
               </Body>
             </Layout>
           {/if}

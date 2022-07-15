@@ -19,22 +19,25 @@
 </script>
 
 <ModalContent
-  title="Update user information"
-  confirmText="Update information"
+  title="更新用户信息"
+  confirmText="更新信息"
   onConfirm={updateInfo}
 >
   <Body size="S">
-    Personalise the platform by adding your first name and last name.
+    通过添加你的姓名来个性化平台。
   </Body>
-  <Input disabled bind:value={$auth.user.email} label="Email" />
+  <Input disabled bind:value={$auth.user.email} label="Email 邮箱" />
+
+  <Input
+      bind:value={$values.lastName}
+      label="姓"
+      dataCy="user-last-name"
+    />
+
   <Input
     bind:value={$values.firstName}
-    label="First name"
+    label="名"
     dataCy="user-first-name"
   />
-  <Input
-    bind:value={$values.lastName}
-    label="Last name"
-    dataCy="user-last-name"
-  />
+
 </ModalContent>

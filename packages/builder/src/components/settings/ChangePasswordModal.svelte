@@ -17,11 +17,11 @@
 </script>
 
 <ModalContent
-  title="Update password"
-  confirmText="Update password"
+  title="更新密码"
+  confirmText="更新密码"
   onConfirm={updatePassword}
   disabled={error || !password}
 >
-  <Body size="S">Enter your new password below.</Body>
+  <Body size="S">请在下面输入新密码。</Body>
   <PasswordRepeatInput bind:password bind:error />
 </ModalContent>

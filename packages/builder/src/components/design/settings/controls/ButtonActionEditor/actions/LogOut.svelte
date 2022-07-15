@@ -9,8 +9,8 @@
 <div class="root">
   <Layout noPadding gap="M">
     <Body size="S">
-      Please enter the URL you would like to be redirected to after logging out.
-      If you don't enter a value, you'll be redirected to the login screen.
+      请输入您想在注销后重定向到的URL
+      如果不输入，将被重定向到登录页面
     </Body>
     <div class="content">
       <Label small>Redirect URL</Label>

@@ -317,7 +317,7 @@
                   secondary
                   on:click={$goto("/builder/portal/apps/templates")}
                 >
-                  Templates
+                  模板
                 </Button>
               {/if}
               {#if !$apps?.length}

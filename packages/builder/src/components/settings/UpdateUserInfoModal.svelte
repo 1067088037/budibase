@@ -26,17 +26,17 @@
   <Body size="S">
     通过添加你的姓名来个性化平台。
   </Body>
-  <Input disabled bind:value={$auth.user.email} label="Email 邮箱" />
+  <Input disabled bind:value={$auth.user.email} label="电子邮箱" />
 
   <Input
       bind:value={$values.lastName}
-      label="姓"
+      label="姓氏"
       dataCy="user-last-name"
     />
 
   <Input
     bind:value={$values.firstName}
-    label="名"
+    label="名字"
     dataCy="user-first-name"
   />
 

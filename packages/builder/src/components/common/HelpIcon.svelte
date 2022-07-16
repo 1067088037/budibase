@@ -1,15 +1,18 @@
 <script>
   import { Icon, Body } from "@budibase/bbui"
+  import { auth } from "stores/portal"
 </script>
 
-<a target="_blank" href="https://github.com/Budibase/budibase/discussions">
-  <div class="inner hoverable">
-    <div class="hidden hoverable">
-      <Body size="S">Need help? Go to our forums</Body>
+{#if $auth.isRoot}
+  <a target="_blank" href="https://github.com/Budibase/budibase/discussions">
+    <div class="inner hoverable">
+      <div class="hidden hoverable">
+        <Body size="S">Need help? Go to our forums</Body>
+      </div>
+      <Icon name="Help" size="XXL" />
     </div>
-    <Icon name="Help" size="XXL" />
-  </div>
-</a>
+  </a>
+{/if}
 
 <style>
   .inner {

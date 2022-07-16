@@ -152,19 +152,19 @@
         <Select disabled options={["All users"]} value="All users" />
       </div>
       <div class="field">
-        <Label size="L">名</Label>
-        <Input
-          thin
-          value={$userFetch?.data?.firstName}
-          on:blur={updateUserFirstName}
-        />
-      </div>
-      <div class="field">
-        <Label size="L">姓</Label>
+        <Label size="L">姓氏</Label>
         <Input
           thin
           value={$userFetch?.data?.lastName}
           on:blur={updateUserLastName}
+        />
+      </div>
+      <div class="field">
+        <Label size="L">名字</Label>
+        <Input
+          thin
+          value={$userFetch?.data?.firstName}
+          on:blur={updateUserFirstName}
         />
       </div>
       <!-- don't let a user remove the privileges that let them be here -->

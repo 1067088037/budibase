@@ -42,31 +42,31 @@
           },
         })
       }
-      notifications.success("Role updated")
+      notifications.success("权限更新成功")
       dispatch("update")
     } catch (error) {
-      notifications.error("Failed to update role")
+      notifications.error("权限更新失败")
     }
   }
 </script>
 
 <ModalContent
   onConfirm={updateUserRoles}
-  title="Update App Role"
-  confirmText="Update role"
-  cancelText="Cancel"
+  title="更新App权限"
+  confirmText="更新权限"
+  cancelText="取消"
   size="M"
   showCloseIcon={false}
 >
   <Body>
-    Update {user.email}'s role for <strong>{app.name}</strong>.
+    更新 {user.email} 对于 <strong>{app.name}</strong> 的权限
   </Body>
   <Select
     placeholder={null}
     bind:value={selectedRole}
     on:change
     {options}
-    label="Role"
+    label="权限"
     getOptionLabel={role => role.label}
     getOptionValue={role => role.value}
   />

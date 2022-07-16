@@ -66,10 +66,10 @@
   async function deleteUser() {
     try {
       await users.delete(userId)
-      notifications.success(`User ${$userFetch?.data?.email} deleted.`)
+      notifications.success(`用户 ${$userFetch?.data?.email} 删除成功.`)
       $goto("./")
     } catch (error) {
-      notifications.error("Error deleting user")
+      notifications.error("用户删除失败")
     }
   }
 
@@ -80,7 +80,7 @@
       await users.save({ ...$userFetch?.data, firstName: evt.target.value })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
   }
 
@@ -89,7 +89,7 @@
       await users.save({ ...$userFetch?.data, lastName: evt.target.value })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
   }
 
@@ -99,7 +99,7 @@
       await users.save({ ...$userFetch?.data, [flagName]: { global: detail } })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
     toggleDisabled = false
   }

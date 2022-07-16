@@ -16,10 +16,10 @@
         password,
         forceResetPassword: true,
       })
-      notifications.success("Password reset successfully")
+      notifications.success("密码重置成功")
       dispatch("update")
     } catch (error) {
-      notifications.error("Error resetting password")
+      notifications.error("密码重置失败")
     }
   }
 </script>

@@ -291,11 +291,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@budibase/types@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@budibase/types/-/types-1.1.7.tgz#d1da67c6c6b09de639130775ed80290148434be0"
-  integrity sha512-WkR9bS4DdVAAzIgzHDsfMLPBcXs+RVwzOXp2eSFrun1fZQfkiAnMO7+EYhYx4+zF6RLBXiF6iYXPDJLzviufGQ==
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"

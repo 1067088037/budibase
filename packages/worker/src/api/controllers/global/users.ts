@@ -57,6 +57,9 @@ export const adminUser = async (ctx: any) => {
       admin: {
         global: true,
       },
+      root: {
+        global: true,
+      },
       tenantId,
     }
     try {

@@ -42,18 +42,18 @@
 
   const resolveWelcomeMessage = (auth, apps) => {
     const userWelcome = auth?.user?.firstName
-      ? `Welcome ${auth?.user?.firstName}!`
-      : "Welcome back!"
-    return apps?.length ? userWelcome : "Let's create your first app!"
+      ? `欢迎 ${auth?.user?.firstName}!`
+      : "欢迎!"
+    return apps?.length ? userWelcome : "开始创建您的第一个应用程序！"
   }
   $: welcomeHeader = resolveWelcomeMessage($auth, $apps)
   $: welcomeBody = $apps?.length
-    ? "Manage your apps and get a head start with templates"
-    : "Start from scratch or get a head start with one of our templates"
+    ? "管理你的应用程序 或 从模板开始创建"
+    : "您可以从头开始设计 或 使用下列模板开始设计"
 
   $: createAppButtonText = $apps?.length
-    ? "Create new app"
-    : "Start from scratch"
+    ? "创建新的应用程序"
+    : "从头开始设计"
 
   $: enrichedApps = enrichApps($apps, $auth.user, sortBy)
   $: filteredApps = enrichedApps.filter(app =>
@@ -285,7 +285,7 @@
                 secondary
                 on:click={initiateAppImport}
               >
-                Import app
+                导入 app
               </Button>
             </div>
           {/if}
@@ -317,7 +317,7 @@
                   secondary
                   on:click={$goto("/builder/portal/apps/templates")}
                 >
-                  Templates
+                  模板
                 </Button>
               {/if}
               {#if !$apps?.length}

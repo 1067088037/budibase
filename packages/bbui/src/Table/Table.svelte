@@ -37,7 +37,7 @@
   export let autoSortColumns = true
   export let compact = false
   export let customPlaceholder = false
-  export let placeholderText = "No rows found"
+  export let placeholderText = "没有找到任何行"
 
   const dispatch = createEventDispatcher()
 

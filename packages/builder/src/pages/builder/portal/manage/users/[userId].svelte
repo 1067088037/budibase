@@ -30,12 +30,12 @@
   let resetPasswordModal
 
   const roleSchema = {
-    name: { displayName: "App" },
-    role: {},
+    name: { displayName: "应用" },
+    "权限": {},
   }
 
   const noRoleSchema = {
-    name: { displayName: "App" },
+    name: { displayName: "应用" },
   }
 
   $: defaultRoleId = $userFetch?.data?.builder?.global ? "ADMIN" : ""
@@ -66,10 +66,10 @@
   async function deleteUser() {
     try {
       await users.delete(userId)
-      notifications.success(`User ${$userFetch?.data?.email} deleted.`)
+      notifications.success(`用户 ${$userFetch?.data?.email} 删除成功.`)
       $goto("./")
     } catch (error) {
-      notifications.error("Error deleting user")
+      notifications.error("用户删除失败")
     }
   }
 
@@ -80,7 +80,7 @@
       await users.save({ ...$userFetch?.data, firstName: evt.target.value })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
   }
 
@@ -89,7 +89,7 @@
       await users.save({ ...$userFetch?.data, lastName: evt.target.value })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
   }
 
@@ -99,7 +99,7 @@
       await users.save({ ...$userFetch?.data, [flagName]: { global: detail } })
       await userFetch.refresh()
     } catch (error) {
-      notifications.error("Error updating user")
+      notifications.error("用户更新失败")
     }
     toggleDisabled = false
   }
@@ -110,6 +110,10 @@
 
   async function toggleAdminAccess({ detail }) {
     return toggleFlag("admin", detail)
+  }
+
+  async function toggleRootAccess({ detail }) {
+    return toggleFlag("root", detail)
   }
 
   async function openUpdateRolesModal({ detail }) {
@@ -127,41 +131,40 @@
         size="S"
         icon="BackAndroid"
       >
-        Back to users
+        返回用户
       </ActionButton>
     </div>
-    <Heading>User: {$userFetch?.data?.email}</Heading>
+    <Heading>用户: {$userFetch?.data?.email}</Heading>
     <Body>
-      Change user settings and update their app roles. Also contains the ability
-      to delete the user as well as force reset their password.
+      更改用户设置和更新他们的应用程序角色。还包含删除用户以及强制重置用户密码的功能。
     </Body>
   </Layout>
   <Divider size="S" />
   <Layout gap="S" noPadding>
-    <Heading size="S">General</Heading>
+    <Heading size="S">通用</Heading>
     <div class="fields">
       <div class="field">
-        <Label size="L">Email</Label>
+        <Label size="L">邮箱</Label>
         <Input disabled thin value={$userFetch?.data?.email} />
       </div>
       <div class="field">
-        <Label size="L">Group(s)</Label>
+        <Label size="L">群组</Label>
         <Select disabled options={["All users"]} value="All users" />
       </div>
       <div class="field">
-        <Label size="L">First name</Label>
-        <Input
-          thin
-          value={$userFetch?.data?.firstName}
-          on:blur={updateUserFirstName}
-        />
-      </div>
-      <div class="field">
-        <Label size="L">Last name</Label>
+        <Label size="L">姓氏</Label>
         <Input
           thin
           value={$userFetch?.data?.lastName}
           on:blur={updateUserLastName}
+        />
+      </div>
+      <div class="field">
+        <Label size="L">名字</Label>
+        <Input
+          thin
+          value={$userFetch?.data?.firstName}
+          on:blur={updateUserFirstName}
         />
       </div>
       <!-- don't let a user remove the privileges that let them be here -->
@@ -184,6 +187,17 @@
             disabled={toggleDisabled}
           />
         </div>
+        {#if $auth.isRoot }
+          <div class="field">
+            <Label size="L">Root access</Label>
+            <Toggle
+              text=""
+              value={$userFetch?.data?.root?.global}
+              on:change={toggleRootAccess}
+              disabled={toggleDisabled}
+            />
+          </div>
+        {/if}
       {/if}
     </div>
     <div class="regenerate">
@@ -191,14 +205,14 @@
         size="S"
         icon="Refresh"
         quiet
-        on:click={resetPasswordModal.show}>Force password reset</ActionButton
+        on:click={resetPasswordModal.show}>强制密码重置</ActionButton
       >
     </div>
   </Layout>
   <Divider size="S" />
   <Layout gap="S" noPadding>
-    <Heading size="S">Configure roles</Heading>
-    <Body>Specify a role to grant access to an app.</Body>
+    <Heading size="S">配置角色</Heading>
+    <Body>指定一个角色来授予应用访问权限。</Body>
     <Table
       on:click={openUpdateRolesModal}
       schema={roleSchema}
@@ -210,10 +224,9 @@
     />
   </Layout>
   <Layout gap="S" noPadding>
-    <Heading size="XS">No Access</Heading>
+    <Heading size="XS">不能访问</Heading>
     <Body
-      >Apps do not appear in the users portal. Public pages may still be viewed
-      if visited directly.</Body
+      >应用程序不会出现在用户门户中。如直接访问公共网页，仍可浏览。</Body
     >
     <Table
       on:click={openUpdateRolesModal}
@@ -226,11 +239,11 @@
   </Layout>
   <Divider size="S" />
   <Layout gap="XS" noPadding>
-    <Heading size="S">Delete user</Heading>
-    <Body>Deleting a user completely removes them from your account.</Body>
+    <Heading size="S">删除用户</Heading>
+    <Body>将从您的帐户中完全删除此用户。</Body>
   </Layout>
   <div class="delete-button">
-    <Button warning on:click={deleteUserModal.show}>Delete user</Button>
+    <Button warning on:click={deleteUserModal.show}>删除用户</Button>
   </div>
 </Layout>
 
@@ -238,13 +251,13 @@
   <ModalContent
     warning
     onConfirm={deleteUser}
-    title="Delete User"
-    confirmText="Delete user"
-    cancelText="Cancel"
+    title="删除用户"
+    confirmText="确定"
+    cancelText="取消"
     showCloseIcon={false}
   >
     <Body>
-      Are you sure you want to delete <strong>{$userFetch?.data?.email}</strong>
+      是否要删除用户： <strong>{$userFetch?.data?.email}</strong>
     </Body>
   </ModalContent>
 </Modal>

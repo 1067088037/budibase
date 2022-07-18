@@ -90,7 +90,7 @@
   <Button
     onClick={openEditor}
     icon="Properties"
-    text="Filter"
+    text="搜索"
     {size}
     type="secondary"
     quiet
@@ -98,7 +98,7 @@
   />
 
   <Modal bind:this={modal}>
-    <ModalContent title="Edit filters" size="XL" onConfirm={updateQuery}>
+    <ModalContent title="编辑搜索条件" size="XL" onConfirm={updateQuery}>
       <FilterModal bind:filters={tmpFilters} {schemaFields} />
     </ModalContent>
   </Modal>

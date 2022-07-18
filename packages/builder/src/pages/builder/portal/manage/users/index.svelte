@@ -16,14 +16,20 @@
   } from "@budibase/bbui"
   import TagsRenderer from "./_components/TagsTableRenderer.svelte"
   import AddUserModal from "./_components/AddUserModal.svelte"
-  import { users } from "stores/portal"
+  import { users, auth } from "stores/portal"
   import { createPaginationStore } from "helpers/pagination"
 
   const schema = {
-    email: {},
-    developmentAccess: { displayName: "Development Access", type: "boolean" },
-    adminAccess: { displayName: "Admin Access", type: "boolean" },
-    group: {},
+    email: { displayName: "电子邮件" },
+    lastName: { displayName: "姓氏" },
+    firstName: { displayName: "名字" },
+    'builder.global': { displayName: "开发者", type: "boolean" },
+    'admin.global': { displayName: "管理员", type: "boolean" },
+    group: { displayName: "组" },
+  }
+
+  if ($auth.isRoot) {
+    schema['root.global'] = { displayName: "ROOT", type: "boolean" }
   }
 
   let pageInfo = createPaginationStore()
@@ -31,6 +37,7 @@
     search = undefined
   $: page = $pageInfo.page
   $: fetchUsers(page, search)
+  let userList
 
   let createUserModal
 
@@ -48,6 +55,10 @@
       pageInfo.loading()
       await users.search({ page, search })
       pageInfo.fetched($users.hasNextPage, $users.nextPage)
+      userList = $users.data.filter(user => {
+        return $auth.isRoot ? true : !user.root?.global
+      })
+      console.log(userList)
     } catch (error) {
       notifications.error("Error getting user list")
     }
@@ -56,31 +67,30 @@
 
 <Layout noPadding>
   <Layout gap="XS" noPadding>
-    <Heading>Users</Heading>
+    <Heading>用户</Heading>
     <Body>
-      Each user is assigned to a group that contains apps and permissions. In
-      this section, you can add users, or edit and delete an existing user.
+      每个用户被分配到一个包含应用程序和权限的组中。在该选项中，您可以添加用户，或编辑和删除现有用户。
     </Body>
   </Layout>
   <Divider size="S" />
   <Layout gap="S" noPadding>
     <div class="users-heading">
-      <Heading size="S">Users</Heading>
+      <Heading size="S">用户</Heading>
       <ButtonGroup>
-        <Button disabled secondary>Import users</Button>
+        <Button disabled secondary>导入用户</Button>
         <Button primary dataCy="add-user" on:click={createUserModal.show}
-          >Add user</Button
+          >添加用户</Button
         >
       </ButtonGroup>
     </div>
     <div class="field">
-      <Label size="L">Search / filter</Label>
+      <Label size="L">搜索 / 过滤</Label>
       <Search bind:value={search} placeholder="" />
     </div>
     <Table
       on:click={({ detail }) => $goto(`./${detail._id}`)}
       {schema}
-      data={$users.data}
+      data={userList}
       allowEditColumns={false}
       allowEditRows={false}
       allowSelectRows={false}

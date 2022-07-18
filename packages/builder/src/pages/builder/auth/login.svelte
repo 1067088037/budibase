@@ -34,7 +34,7 @@
       if ($auth?.user?.forceResetPassword) {
         $goto("./reset")
       } else {
-        notifications.success("Logged in successfully")
+        notifications.success("登录成功！")
         $goto("../portal")
       }
     } catch (err) {
@@ -62,7 +62,7 @@
     <Layout>
       <Layout noPadding justifyItems="center">
         <img alt="logo" src={$organisation.logoUrl || Logo} />
-        <Heading>Sign in to {company}</Heading>
+        <Heading>登录到 {company}</Heading>
       </Layout>
       {#if loaded}
         <GoogleButton />
@@ -70,10 +70,10 @@
       {/if}
       <Divider noGrid />
       <Layout gap="XS" noPadding>
-        <Body size="S" textAlign="center">Sign in with email</Body>
-        <Input label="Email" bind:value={username} />
+        <Body size="S" textAlign="center">通过电子邮件登录</Body>
+        <Input label="电子邮件" bind:value={username} />
         <Input
-          label="Password"
+          label="密码"
           type="password"
           on:change
           bind:value={password}
@@ -81,10 +81,10 @@
       </Layout>
       <Layout gap="XS" noPadding>
         <Button cta disabled={!username && !password} on:click={login}
-          >Sign in to {company}</Button
+          >登录到 {company}</Button
         >
         <ActionButton quiet on:click={() => $goto("./forgot")}>
-          Forgot password?
+          忘记密码？
         </ActionButton>
         {#if multiTenancyEnabled && !cloud}
           <ActionButton
@@ -94,7 +94,7 @@
               $goto("./org")
             }}
           >
-            Change organisation
+            修改组织
           </ActionButton>
         {/if}
       </Layout>

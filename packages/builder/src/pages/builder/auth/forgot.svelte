@@ -40,18 +40,17 @@
         <img alt="logo" src={$organisation.logoUrl || Logo} />
       </Layout>
       <Layout gap="XS" noPadding>
-        <Heading textAlign="center">Forgotten your password?</Heading>
+        <Heading textAlign="center">重置密码</Heading>
         <Body size="S" textAlign="center">
-          No problem! Just enter your account's email address and we'll send you
-          a link to reset it.
+          只要输入您帐户的电子邮件地址，我们会发送一个链接给您用于重置密码。
         </Body>
-        <Input label="Email" bind:value={email} />
+        <Input label="电子邮件" bind:value={email} />
       </Layout>
       <Layout gap="XS" nopadding>
         <Button cta on:click={forgot} disabled={!email}>
-          Reset your password
+          重置密码
         </Button>
-        <ActionButton quiet on:click={() => $goto("../")}>Back</ActionButton>
+        <ActionButton quiet on:click={() => $goto("../")}>返回</ActionButton>
       </Layout>
     </Layout>
   </div>

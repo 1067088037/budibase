@@ -9,7 +9,7 @@
   export let readonly = false
   export let labelPosition = "above"
   export let error = null
-  export let placeholder = "Choose an option or type"
+  export let placeholder = "选择一个选项或类型"
   export let options = []
   export let getOptionLabel = option => extractProperty(option, "label")
   export let getOptionValue = option => extractProperty(option, "value")

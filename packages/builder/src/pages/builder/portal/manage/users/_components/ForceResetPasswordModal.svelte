@@ -16,10 +16,10 @@
         password,
         forceResetPassword: true,
       })
-      notifications.success("Password reset successfully")
+      notifications.success("密码重置成功")
       dispatch("update")
     } catch (error) {
-      notifications.error("Error resetting password")
+      notifications.error("密码重置失败")
     }
   }
 </script>
@@ -27,15 +27,13 @@
 <ModalContent
   onConfirm={resetPassword}
   size="M"
-  title="Force Reset User Password"
-  confirmText="Reset password"
-  cancelText="Cancel"
+  title="强制重置密码"
+  confirmText="重置密码"
+  cancelText="取消"
   showCloseIcon={false}
 >
   <Body noPadding
-    >Before you reset the users password, do not forget to copy the new
-    password. The user will need this to login. Once the user has logged in they
-    will be asked to create a new password that is more secure.</Body
+    >重置用户密码前，请不要忘记复制新密码。用户将需要这个来登录。一旦用户登录，将被要求创建一个更安全的新密码。</Body
   >
-  <Input disabled label="Password" value={password} />
+  <Input disabled label="新密码" value={password} />
 </ModalContent>

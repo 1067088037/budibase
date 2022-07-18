@@ -189,7 +189,7 @@
               hAlign: "stretch",
               vAlign: "top",
               gap: "M",
-              noRowsMessage: "No rows found",
+              noRowsMessage: "没有找到任何行",
             }}
             styles={{
               display: "grid",

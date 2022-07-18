@@ -27,7 +27,7 @@
     </svg>
   </div>
   <span class="spectrum-Body--secondary spectrum-Pagination-counter">
-    Page {page}
+    第 {page} 页
   </span>
   <div
     href="#"

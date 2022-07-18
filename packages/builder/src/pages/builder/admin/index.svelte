@@ -58,9 +58,9 @@
     <Layout>
       <img alt="logo" src={Logo} />
       <Layout gap="XS" justifyItems="center" noPadding>
-        <Heading size="M">Create an admin user</Heading>
+        <Heading size="M">创建一个ROOT用户</Heading>
         <Body size="M" textAlign="center">
-          The admin user has access to everything in Budibase.
+          ROOT用户可以访问所有内容
         </Body>
       </Layout>
       <Layout gap="XS" noPadding>
@@ -69,7 +69,7 @@
       </Layout>
       <Layout gap="XS" noPadding>
         <Button cta disabled={error} on:click={save}>
-          Create super admin user
+          创建ROOT用户
         </Button>
         {#if multiTenancyEnabled}
           <ActionButton
@@ -88,7 +88,7 @@
               modal.show()
             }}
           >
-            Import from cloud
+            从Cloud版本导入
           </ActionButton>
         {/if}
       </Layout>

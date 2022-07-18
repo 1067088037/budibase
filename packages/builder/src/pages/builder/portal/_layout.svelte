@@ -28,19 +28,19 @@
   let apiKeyModal
   let mobileMenuVisible = false
 
-  $: menu = buildMenu($auth.isAdmin)
+  $: menu = buildMenu($auth.isAdmin, $auth.isRoot)
 
-  const buildMenu = admin => {
+  const buildMenu = (admin, root) => {
     let menu = [
       {
-        title: "Apps",
+        title: "应用程序",
         href: "/builder/portal/apps",
       },
     ]
-    if (isEnabled(FEATURE_FLAGS.LICENSING)) {
+    if (root || isEnabled(FEATURE_FLAGS.LICENSING)) {
       menu = menu.concat([
         {
-          title: "Usage",
+          title: "使用情况",
           href: "/builder/portal/settings/usage",
         },
       ])
@@ -48,19 +48,23 @@
     if (admin) {
       menu = menu.concat([
         {
-          title: "Users",
+          title: "用户",
           href: "/builder/portal/manage/users",
-          heading: "Manage",
+          heading: "管理",
         },
-        { title: "Auth", href: "/builder/portal/manage/auth" },
-        { title: "Email", href: "/builder/portal/manage/email" },
+      ])
+    }
+    if (root) {
+      menu = menu.concat([
+        { title: "权限", href: "/builder/portal/manage/auth" },
+        { title: "邮箱", href: "/builder/portal/manage/email" },
         {
-          title: "Organisation",
+          title: "组织",
           href: "/builder/portal/settings/organisation",
-          heading: "Settings",
+          heading: "设置",
         },
         {
-          title: "Theming",
+          title: "主题",
           href: "/builder/portal/settings/theming",
         },
       ])
@@ -68,14 +72,14 @@
       if (!$adminStore.cloud) {
         menu = menu.concat([
           {
-            title: "Update",
+            title: "更新",
             href: "/builder/portal/settings/update",
           },
         ])
 
         if (isEnabled(FEATURE_FLAGS.LICENSING)) {
           menu = menu.concat({
-            title: "Upgrade",
+            title: "更新",
             href: "/builder/portal/settings/upgrade",
           })
         }
@@ -83,9 +87,9 @@
     } else {
       menu = menu.concat([
         {
-          title: "Theming",
+          title: "主题",
           href: "/builder/portal/settings/theming",
-          heading: "Settings",
+          heading: "设置",
         },
       ])
     }
@@ -187,24 +191,24 @@
               on:click={() => userInfoModal.show()}
               dataCy={"user-info"}
             >
-              Update user information
+              更新用户信息
             </MenuItem>
             {#if $auth.isBuilder}
               <MenuItem icon="Key" on:click={() => apiKeyModal.show()}>
-                View API key
+                查看API密匙
               </MenuItem>
             {/if}
             <MenuItem
               icon="LockClosed"
               on:click={() => changePasswordModal.show()}
             >
-              Update password
+              更新密码
             </MenuItem>
             <MenuItem icon="UserDeveloper" on:click={() => $goto("../apps")}>
-              Close developer mode
+              关闭开发者模式
             </MenuItem>
             <MenuItem dataCy="user-logout" icon="LogOut" on:click={logout}
-              >Log out
+              >注销
             </MenuItem>
           </ActionMenu>
         </div>

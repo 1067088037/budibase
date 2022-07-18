@@ -76,25 +76,23 @@
 {#if $auth.isAdmin}
   <Layout noPadding>
     <Layout gap="XS" noPadding>
-      <Heading size="M">Organisation</Heading>
+      <Heading size="M">组织</Heading>
       <Body>
-        Organisation settings is where you can edit your organisation name and
-        logo. You can also configure your platform URL and enable or disable
-        analytics.
+        组织设置是您编辑组织名称和图标的地方。您还可以配置平台URL并启用或禁用分析。
       </Body>
     </Layout>
     <Divider size="S" />
     <Layout gap="XS" noPadding>
-      <Heading size="S">Information</Heading>
-      <Body size="S">Here you can update your logo and organization name.</Body>
+      <Heading size="S">信息</Heading>
+      <Body size="S">此处可以修改您的图标和组织名。</Body>
     </Layout>
     <div class="fields">
       <div class="field">
-        <Label size="L">Org. name</Label>
+        <Label size="L">组织名</Label>
         <Input thin bind:value={$values.company} />
       </div>
       <div class="field logo">
-        <Label size="L">Logo</Label>
+        <Label size="L">图标</Label>
         <div class="file">
           <Dropzone
             value={[$values.logo]}
@@ -112,15 +110,15 @@
     {#if !$admin.cloud}
       <Divider size="S" />
       <Layout gap="XS" noPadding>
-        <Heading size="S">Platform</Heading>
-        <Body size="S">Here you can set up general platform settings.</Body>
+        <Heading size="S">平台</Heading>
+        <Body size="S">您可以在此处设置通用平台设置。</Body>
       </Layout>
       <div class="fields">
         <div class="field">
           <Label
             size="L"
-            tooltip={"Update the Platform URL to match your Budibase web URL. This keeps email templates and authentication configs up to date."}
-            >Platform URL</Label
+            tooltip={"更新平台URL以匹配您的网页URL。这样可以使电子邮件模板和身份验证配置保持最新。"}
+            >平台 URL</Label
           >
           <Input thin bind:value={$values.platformUrl} />
         </div>
@@ -129,18 +127,18 @@
     {#if !$admin.cloud}
       <Divider size="S" />
       <Layout gap="XS" noPadding>
-        <Heading size="S">Analytics</Heading>
-        <Body size="S">Choose whether to opt-in or opt-out of analytics.</Body>
+        <Heading size="S">智能分析</Heading>
+        <Body size="S">选择是否开启智能分析。</Body>
       </Layout>
       <div class="fields">
         <div class="field">
-          <Label size="L">Analytics</Label>
+          <Label size="L">智能分析</Label>
           <Toggle text="" bind:value={$values.analyticsEnabled} />
         </div>
       </div>
     {/if}
     <div>
-      <Button disabled={loading} on:click={saveConfig} cta>Save</Button>
+      <Button disabled={loading} on:click={saveConfig} cta>保存</Button>
     </div>
   </Layout>
 {/if}

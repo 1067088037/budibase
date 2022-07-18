@@ -54,23 +54,22 @@
 {#if $auth.isAdmin}
   <Layout noPadding>
     <Layout gap="XS" noPadding>
-      <Heading size="M">Updates</Heading>
+      <Heading size="M">更新</Heading>
       <Body>
-        Keep your budibase installation up to date to take advantage of the
-        latest features, security updates and much more.
+      使您的Budibase安装保持最新，以使用最新功能、安全更新等。
       </Body>
     </Layout>
     <Divider size="S" />
     {#if version}
       <div>
-        <Label size="L">Current version</Label>
+        <Label size="L">当前版本</Label>
         <Heading size="XS">
           {version}
         </Heading>
       </div>
     {/if}
     <div>
-      <Button cta on:click={updateBudibase}>Check for updates</Button>
+      <Button cta on:click={updateBudibase}>检查更新</Button>
     </div>
   </Layout>
 {/if}

@@ -139,8 +139,8 @@
 </script>
 
 <ModalContent
-  title={"Create your app"}
-  confirmText={template?.fromFile ? "Import app" : "Create app"}
+  title={"创建应用程序"}
+  confirmText={template?.fromFile ? "导入 app" : "创建 app"}
   onConfirm={createNewApp}
   disabled={!$validation.valid}
 >
@@ -157,7 +157,7 @@
     <Dropzone
       error={$validation.touched.file && $validation.errors.file}
       gallery={false}
-      label="File to import"
+      label="导入文件"
       value={[$values.file]}
       on:change={e => {
         $values.file = e.detail?.[0]
@@ -172,7 +172,7 @@
     error={$validation.touched.name && $validation.errors.name}
     on:blur={() => ($validation.touched.name = true)}
     on:change={nameToUrl($values.name)}
-    label="Name"
+    label="名称"
     placeholder={defaultAppName}
   />
   <span>
